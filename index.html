@@ -1,0 +1,278 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1612;
+    --ink2: #4a4640;
+    --ink3: #8a8680;
+    --paper: #f9f6f0;
+    --paper2: #f2ede4;
+    --paper3: #e8e2d8;
+    --accent: #c8522a;
+    --accent2: #e8a84c;
+    --rule: #d4cec4;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
+
+  .port { max-width: 680px; margin: 0 auto; padding: 0 0 3rem; }
+
+  /* ── HEADER ── */
+  .header { padding: 2.5rem 1.5rem 0; border-bottom: 1px solid var(--rule); }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+  .issue-tag { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink3); font-family: var(--sans); font-weight: 500; }
+  .nav { display: flex; gap: 20px; }
+  .nav a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink2); text-decoration: none; font-weight: 500; cursor: pointer; transition: color 0.2s; }
+  .nav a:hover { color: var(--accent); }
+
+  .masthead { text-align: center; padding: 1.5rem 0 1rem; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
+  .name-big { font-family: var(--serif); font-size: 56px; font-weight: 700; letter-spacing: -1px; line-height: 1; color: var(--ink); }
+  .name-big em { font-style: italic; color: var(--accent); }
+  .tagline-row { display: flex; align-items: center; gap: 12px; justify-content: center; margin-top: 10px; }
+  .tagline-line { flex: 1; max-width: 80px; height: 1px; background: var(--rule); }
+  .tagline { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--ink3); font-weight: 400; }
+
+  .header-meta { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
+  .meta-item { font-size: 11px; letter-spacing: 1px; color: var(--ink3); font-weight: 300; }
+  .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+  /* ── HERO ── */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--rule); }
+  .hero-text { padding: 2rem 1.5rem; border-right: 1px solid var(--rule); }
+  .section-kicker { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .section-kicker::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--accent); }
+  .hero-headline { font-family: var(--serif); font-size: 32px; font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
+  .hero-headline em { font-style: italic; }
+  .hero-body { font-size: 14px; line-height: 1.75; color: var(--ink2); font-weight: 300; }
+  .hero-image { background: var(--paper2); display: flex; align-items: center; justify-content: center; min-height: 260px; position: relative; overflow: hidden; }
+  .hero-image-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+  /* Portrait illustration */
+  .portrait-wrap { position: relative; }
+
+  /* ── STATS ROW ── */
+  .stats { display: grid; grid-template-columns: repeat(3,1fr); border-bottom: 1px solid var(--rule); }
+  .stat { padding: 1.25rem 1.5rem; border-right: 1px solid var(--rule); text-align: center; }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: var(--serif); font-size: 36px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .stat-num span { font-size: 20px; color: var(--accent); }
+  .stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink3); margin-top: 4px; font-weight: 400; }
+
+  /* ── WORK GRID ── */
+  .section-header { padding: 1.5rem 1.5rem 0.75rem; display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); }
+  .section-title { font-family: var(--serif); font-size: 28px; font-weight: 700; }
+  .section-title em { font-style: italic; color: var(--ink3); font-size: 20px; }
+  .see-all { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); cursor: pointer; font-weight: 500; }
+
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .work-card { border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule); cursor: pointer; transition: background 0.2s; }
+  .work-card:nth-child(even) { border-right: none; }
+  .work-card:hover { background: var(--paper2); }
+  .work-thumb { height: 160px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .work-info { padding: 1rem 1.25rem 1.25rem; border-top: 1px solid var(--rule); }
+  .work-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink3); font-weight: 500; margin-bottom: 4px; }
+  .work-title { font-family: var(--serif); font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .work-desc { font-size: 12px; color: var(--ink3); line-height: 1.6; font-weight: 300; }
+
+  /* ── SKILLS ── */
+  .skills-section { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink); }
+  .skills-col { padding: 1.5rem; }
+  .skills-col:first-child { border-right: 1px solid var(--rule); }
+  .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--paper3); }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-name { font-size: 13px; color: var(--ink2); font-weight: 400; }
+  .skill-bar { width: 80px; height: 3px; background: var(--paper3); border-radius: 2px; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--ink); border-radius: 2px; transition: width 1s ease; }
+
+  /* ── CONTACT ── */
+  .contact { padding: 2rem 1.5rem; border-top: 2px solid var(--ink); display: flex; justify-content: space-between; align-items: flex-end; }
+  .contact-left { }
+  .contact-heading { font-family: var(--serif); font-size: 28px; font-weight: 700; font-style: italic; color: var(--ink); margin-bottom: 8px; }
+  .contact-email { font-size: 16px; color: var(--accent); font-weight: 400; letter-spacing: 0.5px; }
+  .contact-right { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  .social-link { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink3); font-weight: 500; cursor: pointer; transition: color 0.2s; }
+  .social-link:hover { color: var(--accent); }
+
+  .footer-rule { margin: 0 1.5rem; height: 1px; background: var(--rule); }
+  .footer { padding: 1rem 1.5rem; display: flex; justify-content: space-between; }
+  .footer-txt { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink3); font-weight: 300; }
+
+  /* animations */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  .port > * { animation: fadeUp 0.5s ease both; }
+  .port > *:nth-child(1) { animation-delay: 0.0s; }
+  .port > *:nth-child(2) { animation-delay: 0.08s; }
+  .port > *:nth-child(3) { animation-delay: 0.16s; }
+  .port > *:nth-child(4) { animation-delay: 0.22s; }
+  .port > *:nth-child(5) { animation-delay: 0.28s; }
+  .port > *:nth-child(6) { animation-delay: 0.34s; }
+</style>
+
+<div class="port">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <span class="issue-tag">Portfolio · 2026 Edition</span>
+      <nav class="nav">
+        <a>Work</a>
+        <a>About</a>
+        <a>Contact</a>
+      </nav>
+    </div>
+    <div class="masthead">
+      <div class="name-big">Aria <em>Solano</em></div>
+      <div class="tagline-row">
+        <div class="tagline-line"></div>
+        <div class="tagline">Visual Designer &amp; Art Director</div>
+        <div class="tagline-line"></div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="meta-item">Based in Milan, Italy</span>
+      <div class="meta-dot"></div>
+      <span class="meta-item">Available for Freelance</span>
+      <div class="meta-dot"></div>
+      <span class="meta-item">aria@solano.design</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <div class="section-kicker">About</div>
+      <div class="hero-headline">Crafting stories through <em>form &amp; space</em></div>
+      <p class="hero-body">I design brands, editorial systems, and digital experiences that feel inevitable — clean logic with a warm soul. Eight years shaping identities for studios and startups across Europe and beyond.</p>
+    </div>
+    <div class="hero-image">
+      <svg width="200" height="260" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="260" fill="#e8e2d8"/>
+        <ellipse cx="100" cy="95" rx="42" ry="48" fill="#c8b8a0"/>
+        <ellipse cx="100" cy="210" rx="68" ry="75" fill="#b8a890"/>
+        <ellipse cx="100" cy="82" rx="28" ry="32" fill="#d4c4ac"/>
+        <ellipse cx="88" cy="88" rx="4" ry="5" fill="#5a4a38"/>
+        <ellipse cx="112" cy="88" rx="4" ry="5" fill="#5a4a38"/>
+        <path d="M90 102 Q100 110 110 102" stroke="#8a6a50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <rect x="0" y="220" width="200" height="40" fill="#c8522a" opacity="0.15"/>
+        <text x="100" y="246" font-family="serif" font-size="11" fill="#c8522a" text-anchor="middle" letter-spacing="2" font-style="italic">Aria Solano</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">8<span>+</span></div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">120<span>+</span></div>
+      <div class="stat-label">Projects Delivered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">34<span></span></div>
+      <div class="stat-label">Clients Worldwide</div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <div class="section-header">
+    <div class="section-title">Selected Work <em>— 2024/26</em></div>
+    <span class="see-all">View all →</span>
+  </div>
+  <div class="work-grid">
+
+    <div class="work-card">
+      <div class="work-thumb" style="background:#e8e0d0;">
+        <svg width="120" height="90" viewBox="0 0 120 90"><rect x="10" y="10" width="100" height="70" rx="2" fill="none" stroke="#c8522a" stroke-width="1.5"/><rect x="20" y="22" width="35" height="4" rx="1" fill="#1a1612"/><rect x="20" y="30" width="55" height="2" rx="1" fill="#8a8680"/><rect x="20" y="36" width="45" height="2" rx="1" fill="#8a8680"/><rect x="20" y="48" width="80" height="22" rx="2" fill="#c8522a" opacity="0.12"/><text x="60" y="63" font-family="serif" font-size="9" fill="#c8522a" text-anchor="middle" font-style="italic">Brand Identity</text></svg>
+      </div>
+      <div class="work-info">
+        <div class="work-tag">Branding · 2025</div>
+        <div class="work-title">Forma Studio</div>
+        <div class="work-desc">Complete identity system for a Milanese architecture practice — logotype, stationery, signage.</div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-thumb" style="background:#f0e8d8;">
+        <svg width="120" height="90" viewBox="0 0 120 90"><rect x="15" y="8" width="55" height="74" rx="2" fill="#1a1612"/><rect x="18" y="12" width="49" height="62" rx="1" fill="#f9f6f0"/><rect x="22" y="18" width="30" height="3" rx="1" fill="#1a1612"/><rect x="22" y="25" width="38" height="1.5" rx="1" fill="#8a8680"/><rect x="22" y="30" width="32" height="1.5" rx="1" fill="#8a8680"/><rect x="22" y="38" width="41" height="20" rx="1" fill="#e8a84c" opacity="0.3"/><rect x="80" y="20" width="28" height="50" rx="2" fill="#c8522a" opacity="0.15" stroke="#c8522a" stroke-width="1"/><text x="94" y="48" font-family="serif" font-size="7" fill="#c8522a" text-anchor="middle" font-style="italic">Edit.</text></svg>
+      </div>
+      <div class="work-info">
+        <div class="work-tag">Editorial · 2025</div>
+        <div class="work-title">Luce Magazine</div>
+        <div class="work-desc">Art direction and full layout system for an independent Italian design quarterly.</div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-thumb" style="background:#ece4d8;">
+        <svg width="120" height="90" viewBox="0 0 120 90"><rect x="20" y="15" width="80" height="60" rx="3" fill="#1a1612"/><rect x="23" y="18" width="74" height="54" rx="2" fill="#f9f6f0"/><rect x="30" y="26" width="25" height="2" rx="1" fill="#1a1612"/><rect x="30" y="32" width="60" height="1" rx="1" fill="#d4cec4"/><rect x="30" y="38" width="60" height="22" rx="2" fill="#e8e2d8"/><circle cx="78" cy="49" r="8" fill="#c8522a" opacity="0.8"/><text x="78" y="52" font-family="sans-serif" font-size="7" fill="white" text-anchor="middle" font-weight="bold">UI</text></svg>
+      </div>
+      <div class="work-info">
+        <div class="work-tag">Digital · 2024</div>
+        <div class="work-title">Canopy App</div>
+        <div class="work-desc">UI design and design system for a sustainability tracking platform — 0 to launch.</div>
+      </div>
+    </div>
+
+    <div class="work-card">
+      <div class="work-thumb" style="background:#f5efe4;">
+        <svg width="120" height="90" viewBox="0 0 120 90"><circle cx="60" cy="45" r="30" fill="none" stroke="#e8a84c" stroke-width="1.5"/><circle cx="60" cy="45" r="22" fill="none" stroke="#1a1612" stroke-width="0.8"/><text x="60" y="40" font-family="serif" font-size="10" fill="#1a1612" text-anchor="middle" font-weight="bold">OLIO</text><text x="60" y="52" font-family="serif" font-size="6" fill="#8a8680" text-anchor="middle" letter-spacing="2">NATURALE</text><line x1="42" y1="56" x2="78" y2="56" stroke="#e8a84c" stroke-width="0.8"/></svg>
+      </div>
+      <div class="work-info">
+        <div class="work-tag">Packaging · 2024</div>
+        <div class="work-title">Olio Naturale</div>
+        <div class="work-desc">Label and packaging design for a boutique Sicilian olive oil — print production included.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section-header" style="border-top: 2px solid var(--ink);">
+    <div class="section-title">Skills <em>&amp; Tools</em></div>
+  </div>
+  <div class="skills-section">
+    <div class="skills-col">
+      <p class="section-kicker" style="margin-bottom:14px;">Design</p>
+      <div class="skill-item"><span class="skill-name">Brand Identity</span><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Editorial Layout</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Typography</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">UI / Digital</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Packaging</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+    </div>
+    <div class="skills-col">
+      <p class="section-kicker" style="margin-bottom:14px;">Tools</p>
+      <div class="skill-item"><span class="skill-name">Figma</span><div class="skill-bar"><div class="skill-fill" style="width:96%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Adobe Illustrator</span><div class="skill-bar"><div class="skill-fill" style="width:94%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">InDesign</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Photoshop</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">After Effects</span><div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div></div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="contact-left">
+      <div class="contact-heading">Let's make something.</div>
+      <div class="contact-email">aria@solano.design</div>
+    </div>
+    <div class="contact-right">
+      <span class="social-link">Instagram</span>
+      <span class="social-link">Behance</span>
+      <span class="social-link">LinkedIn</span>
+    </div>
+  </div>
+
+  <div class="footer-rule"></div>
+  <div class="footer">
+    <span class="footer-txt">© 2026 Aria Solano</span>
+    <span class="footer-txt">Milan · Italy</span>
+  </div>
+
+</div>
